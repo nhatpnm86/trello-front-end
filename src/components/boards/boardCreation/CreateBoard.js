@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 const CreateBoard = () => (
     <Card>
         <CardActions>
-            <Button>Create a new card...</Button>
+            <Button>Create a new board...</Button>
         </CardActions>
     </Card>
 )

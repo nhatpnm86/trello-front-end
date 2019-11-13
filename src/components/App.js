@@ -5,16 +5,37 @@ import Header from './Header'
 import InvalidUrl from './InvalidUrl'
 import BoardContainer from './boards/BoardContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Switch>
-      <Route exact path="/" component={BoardContainer} />
-      <Route component={InvalidUrl} />
-      </Switch>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      boards: []
+    };
+  }
+
+  handleSubmitCreatingNewBoard = (boardName) => {
+    const boards = this.state.boards.slice();
+    boards.push({ name: boardName, lists: [] });
+    this.setState({ boards: boards });
+  }
+
+  render() {
+    const boards = this.state.boards;
+
+    return (
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => <BoardContainer {...props} boards={boards} onSubmitCreatingNewBoard={this.handleSubmitCreatingNewBoard} />}
+          />
+          <Route component={InvalidUrl} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;

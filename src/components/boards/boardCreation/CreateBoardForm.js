@@ -6,22 +6,41 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
-const CreateBoardForm = (props) => (
-    <Card>
-        <CardContent>
-            <Typography>
-                Create a new board
-            </Typography>
-            <TextField
-                placeholder="Let's enter the board name"
-                fullWidth
-            />
-        </CardContent>
-        <CardActions>
-            <Button onClick={props.onCancelCreatingBoard}>Cancel</Button>
-            <Button onClick={props.onSubmitCreatingBoard}>Submit</Button>
-        </CardActions>
-    </Card>
-)
+class CreateBoardForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            newBoardName: ''
+        }
+    }
+
+    handleNewBoardNameChange = (e) => {
+        const name = e.target.value;
+        this.setState({ newBoardName: name });
+    }
+
+    render() {
+        const newBoardName = this.state.newBoardName;
+
+        return (
+            <Card>
+                <CardContent>
+                    <Typography>
+                        Create a new board
+                    </Typography>
+                    <TextField
+                        placeholder="Let's enter the board name"
+                        fullWidth
+                        onChange={this.handleNewBoardNameChange}
+                    />
+                </CardContent>
+                <CardActions>
+                    <Button onClick={this.props.onCancelCreatingBoard}>Cancel</Button>
+                    <Button onClick={this.props.onSubmitCreatingBoard.bind(this, newBoardName)}>Submit</Button>
+                </CardActions>
+            </Card>
+        )
+    }
+}
 
 export default CreateBoardForm;

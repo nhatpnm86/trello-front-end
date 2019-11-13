@@ -15,15 +15,22 @@ class CreateBoardContainer extends Component {
         this.setState({ isCreatingNewBoard: true });
     }
 
-    handleCancellingCreatingBoard = () => {
+    handleCancelCreatingBoard = () => {
         this.setState({ isCreatingNewBoard: false });
+    }
+
+    handleSubmitCreatingBoard = (boardName) => {
+        this.setState(
+            { isCreatingNewBoard: false },
+            () => this.props.onSubmitCreatingNewBoard(boardName)
+            );
     }
 
     render() {
         const isCreatingNewBoard = this.state.isCreatingNewBoard;
         const activeComponent =
             isCreatingNewBoard ?
-                <CreateBoardForm onCancelCreatingBoard={this.handleCancellingCreatingBoard} onSubmitCreatingBoard={this.handleCancellingCreatingBoard} /> :
+                <CreateBoardForm onCancelCreatingBoard={this.handleCancelCreatingBoard} onSubmitCreatingBoard={this.handleSubmitCreatingBoard} /> :
                 <CreateBoard onClick={this.handleCreateNewBoardClick} />;
 
         return (

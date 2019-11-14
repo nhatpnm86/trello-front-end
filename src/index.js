@@ -1,16 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore } from 'redux'
+import trelloApp from './reducers'
+import Root from './components/Root'
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter} from 'react-router-dom'
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
-    document.getElementById('root')
-);
+const store = createStore(trelloApp)
+
+render(<Root store={store} />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

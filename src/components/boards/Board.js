@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-const Board = ({ onClick, text }) => (
-  <li
-    onClick={onClick}
-  >
-    {text}
-  </li>
+const Board = ({ id, text }) => (
+    <li>
+        <Link
+            exact
+            to={`/board/${id}`}
+        >
+            {text}
+        </Link>
+    </li>
 )
 
 Board.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired
 }
 
 export default Board

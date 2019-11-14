@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Board from './Board'
 
-const BoardCollection = ({ boards, onBoardClick }) => (
+const BoardCollection = ({ boards }) => (
   <ul>
     {boards.map((board, index) => (
-      <Board key={index} {...board} onClick={() => onBoardClick(index)} />
+      <Board key={index} {...board} />
     ))}
   </ul>
 )

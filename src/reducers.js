@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import {
-  ADD_BOARD,
-  SHOW_BOARD
+  ADD_BOARD
 } from './actions'
+import uniqueId from 'lodash/uniqueId'
 
 function boards(state = [], action) {
   switch (action.type) {
@@ -10,6 +10,7 @@ function boards(state = [], action) {
       return [
         ...state,
         {
+          id: uniqueId(''),
           text: action.text
         }
       ]

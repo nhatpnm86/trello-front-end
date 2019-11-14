@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { showBoard } from '../actions'
 import BoardCollection from '../components/boards/BoardCollection'
 
 const mapStateToProps = state => {
@@ -8,17 +7,8 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onBoardClick: id => {
-      dispatch(showBoard(id))
-    }
-  }
-}
-
 const AllBoards = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(BoardCollection)
 
 export default AllBoards

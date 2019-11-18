@@ -11,7 +11,8 @@ function boards(state = [], action) {
         ...state,
         {
           id: uniqueId(''),
-          text: action.text
+          text: action.text,
+          lists: []
         }
       ]
     default:

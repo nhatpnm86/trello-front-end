@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable';
 import {
-  ADD_BOARD
-} from './actions'
-import uniqueId from 'lodash/uniqueId'
+  ADD_BOARD,
+  ADD_LIST
+} from './actions';
+import uniqueId from 'lodash/uniqueId';
+import { mergeDeep } from 'immutable';
 
 function boards(state = [], action) {
   switch (action.type) {
@@ -14,14 +16,32 @@ function boards(state = [], action) {
           text: action.text,
           lists: []
         }
-      ]
+      ];
+    case ADD_LIST:
+      console.log(action);
+      return mergeDeep(
+        state,
+        [
+          {
+            id: action.boardId,
+            lists: [
+              {
+                id: uniqueId(''),
+                name: action.name,
+                tasks: []
+              }
+            ]
+          }
+        ]
+      );
+
     default:
-      return state
-  }
-}
+      return state;
+  };
+};
 
 const trelloApp = combineReducers({
   boards
-})
+});
 
-export default trelloApp
+export default trelloApp;

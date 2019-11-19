@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ListCollection = ({ boards }) => {
-    boardId 
+const ListCollection = ({ lists }) => {
     return (
-        <ul></ul>
+        <ul>
+            {lists.map((list, index) => <li key={index}>{list.name}</li>)}
+        </ul>
     );
 };
 

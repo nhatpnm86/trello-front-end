@@ -6,7 +6,7 @@ const Board = ({ id, text }) => (
     <li>
         <Link
             exact
-            to={`/board/${id}`}
+            to={`/b/${id}`}
         >
             {text}
         </Link>

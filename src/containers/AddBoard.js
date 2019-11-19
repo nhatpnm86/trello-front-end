@@ -1,32 +1,33 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { addBoard } from '../actions'
+import React from 'react';
+import { connect } from 'react-redux';
+import { addBoard } from '../actions';
 
 let AddBoard = ({ dispatch }) => {
-  let input
+  let input;
 
   return (
     <div>
       <form
         onSubmit={e => {
-          e.preventDefault()
+          e.preventDefault();
           if (!input.value.trim()) {
-            return
-          }
-          dispatch(addBoard(input.value))
-          input.value = ''
+            return;
+          };
+          dispatch(addBoard(input.value));
+          input.value = '';
         }}
       >
         <input
           ref={node => {
-            input = node
+            input = node;
           }}
         />
         <button type="submit">Add Board</button>
       </form>
     </div>
-  )
-}
-AddBoard = connect()(AddBoard)
+  );
+};
 
-export default AddBoard
+AddBoard = connect()(AddBoard);
+
+export default AddBoard;

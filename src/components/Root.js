@@ -12,7 +12,7 @@ const Root = ({ store }) => (
         <Router>
             <Header />
             <Switch>
-                <Route exact path="/" component={App} />
+                <Route exact="true" path="/" component={App} />
                 <Route path="/b/:id" component={BoardDetails} />
                 <Route component={InvalidUrl} />
             </Switch>

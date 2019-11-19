@@ -13,11 +13,10 @@ const BoardCollection = ({ boards }) => (
 BoardCollection.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired,
-  onBoardClick: PropTypes.func.isRequired
+  ).isRequired
 }
 
 export default BoardCollection

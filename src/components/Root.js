@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './Header'
 import App from './App'
+import BoardDetails from './BoardDetails'
 import InvalidUrl from './InvalidUrl'
 
 const Root = ({ store }) => (
@@ -12,7 +13,7 @@ const Root = ({ store }) => (
             <Header />
             <Switch>
                 <Route exact path="/" component={App} />
-                <Route path="/b/:id" component={ListCollection} />
+                <Route path="/b/:id" component={BoardDetails} />
                 <Route component={InvalidUrl} />
             </Switch>
         </Router>
